@@ -44,9 +44,9 @@
  *         7 | 11
  */
 
-#if !defined(__AVR_ATmega1280__) && !defined(__AVR_ATmega2560__)
+  #if !defined(__AVR_ATmega1280__) && !defined(__AVR_ATmega2560__)
   #error "Oops!  Make sure you have 'Arduino Mega' selected from the 'Tools -> Boards' menu."
-#endif
+  #endif
 
 #ifndef BOARD_NAME
   #define BOARD_NAME "RAMPS 1.4"
@@ -55,11 +55,11 @@
 //
 // Servos
 //
-#ifdef IS_RAMPS_13
-  #define SERVO0_PIN        7   // RAMPS_13 // Will conflict with BTN_EN2 on LCD_I2C_VIKI
-#else
-  #define SERVO0_PIN       11
-#endif
+  #ifdef IS_RAMPS_13
+    #define SERVO0_PIN      7   // RAMPS_13 // Will conflict with BTN_EN2 on LCD_I2C_VIKI
+  #else
+    #define SERVO0_PIN     11
+  #endif
 #define SERVO1_PIN          6
 #define SERVO2_PIN          5
 #ifndef SERVO3_PIN
@@ -260,9 +260,9 @@
     #define FAN_PIN        RAMPS_D9_PIN
   #elif ENABLED(IS_RAMPS_EEF) || ENABLED(IS_RAMPS_SF) // Hotend, Hotend, Fan or Spindle, Fan
     #define FAN_PIN        RAMPS_D8_PIN
-  #elif ENABLED(IS_RAMPS_EEB)                         // Hotend, Hotend, Bed
-    #define FAN_PIN         4   // IO pin. Buffer needed
-  #else                                               // Non-specific are "EFB" (i.e., "EFBF" or "EFBE")
+  #elif ENABLED(IS_RAMPS_EEB)                  // Hotend, Hotend, Bed
+    #define FAN_PIN         4                  // IO pin. Buffer needed
+  #else                                        // Non-specific are "EFB" (i.e., "EFBF" or "EFBE")
     #define FAN_PIN        RAMPS_D9_PIN
   #endif
 #endif
@@ -419,8 +419,8 @@
         #define BTN_EN1         17
         #define BTN_EN2         23
       #else
-        #define BTN_EN1         31
-        #define BTN_EN2         33
+        #define BTN_EN1         33
+        #define BTN_EN2         31
       #endif
 
       #define BTN_ENC           35
